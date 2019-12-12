@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState} from 'react';
 
 import "./style.css";
 
-function Content() {
+function Content(local, weather) {
+
+  
   return (
     <div className="wrapper">
       <div className="container">
         <div className="title-prev">
-        <h1>Previsão para Osasco - SP</h1>
+        <h1>Previsão para {local.local}</h1>
         </div>
         <div className="card-section">
           <div className="card">
