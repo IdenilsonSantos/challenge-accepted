@@ -18,6 +18,14 @@ function App() {
     setSearchTerm(e.target.value);
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const loc = Object.values(searchWeatherResults).map(l => {
+      return l
+    });
+    setnameCity(loc["0"])
+  }
+
   useEffect(() => {
     const local = localContent.filter(l => 
         l.name.includes(searchTerm)
@@ -29,12 +37,6 @@ function App() {
     setSearchLocalResults([local]);
     setSearchWeatherResults(weather);
 
-    const loc = Object.values(searchWeatherResults).map(l => {
-      return l.locale.name
-    });
-
-    setnameCity(loc)
-
   }, [searchTerm]);
 
   return (
@@ -42,13 +44,13 @@ function App() {
     <Header/>
     <div className="sub-header">
         <div className="container">
-            <form className="form-box">
+            <form className="form-box" onSubmit={handleSubmit}>
                 <input type="text" placeholder="Digite aqui a localidade" value={searchTerm} onChange={handleChange} className="input-location"/>
                 <button className="button-search"/>
             </form>
         </div>
     </div>
-    <Content local={nameCity[0]}/>
+    <Content weather={nameCity}/>
     </>
   );
 }

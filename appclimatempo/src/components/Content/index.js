@@ -2,14 +2,14 @@ import React, { useState} from 'react';
 
 import "./style.css";
 
-function Content(local, weather) {
+function Content(weather) {
+  const { locale , period} = weather.local;
 
-  
   return (
     <div className="wrapper">
       <div className="container">
         <div className="title-prev">
-        <h1>Previsão para {local.local}</h1>
+        <h1>Previsão para </h1>
         </div>
         <div className="card-section">
           <div className="card">
