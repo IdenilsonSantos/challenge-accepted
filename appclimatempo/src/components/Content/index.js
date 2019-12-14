@@ -3,8 +3,7 @@ import React, { useState} from 'react';
 import "./style.css";
 
 function Content(temp) {
-  const { locale , period, weather } = temp.weather;
-  const [ temperatureIndicator, setTemperatureIndicator] = useState()
+  const { locale , weather } = temp.weather;
 
   var local = {};
   Object.assign(local, locale);
@@ -12,9 +11,6 @@ function Content(temp) {
   var info = {};
   Object.assign(info, weather)
 
-  {Object.keys([info]).map((item, i) => (
-    console.log(info)
-  ))}
   return (
     <div className="wrapper">
       <div className="container">
@@ -23,7 +19,8 @@ function Content(temp) {
         </div>
         <div className="card-section">
         {Object.values(info).map((item, i) => (
-              <div className="card" key={i}>
+          item ? (
+            <div className="card" key={i}>
               <div className="card-header">
                 <h4>{item.date}</h4>
                 <p>{item.text}</p>
@@ -47,6 +44,10 @@ function Content(temp) {
                 </div>
               </div>
             </div>
+        
+          ) : (
+            <h1>AA</h1>
+          )
         ))}
         </div>
        
